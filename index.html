@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>PhoneGap ile Uygulama Geliştirmek</title>
+	<link rel="stylesheet"  href="css/jquery.mobile.min.css">
+	<style>
+		#homeBanner {
+			width: 100%;
+		}
+		.center {
+			text-align: center;
+			margin-left: auto;
+			margin-right:auto;
+		}
+		.banner {
+			display:block;
+			width: 100%;
+		}
+		#qrcode {
+			display:block;	
+			margin-left: auto;
+			margin-right:auto;
+		}
+		#map2 {
+			margin-left: auto;
+			margin-right:auto;
+			width: 320px;
+			height: 320px;  
+		}
+	</style>
+	<link rel="stylesheet" href="css/leaflet.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/map.js"></script>
+	<script src="js/jquery.mobile.min.js"></script>
+	<script src="js/leaflet.js"></script>
+	<script src="js/app.js"></script>
+	<script src="phonegap.js"></script>
+	<script src="barcodescanner.js"></script>
+
+</head>
+	
+<body>
+<div id="homeScreen" data-role="page">
+	<img src="imgs/vidobu.png" class="banner" />
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true" class="ui-nodisc-icon ui-alt-icon">
+			<li><a href="#currentExhibits" >Güncel Haberler</a></li>
+			<li><a href="#pastExhibits">Geçmiş Haberler</a></li>
+			<li><a href="">Etkinlik Takvimi</a></li>
+			<li><a href="#discoverScreen">[ Sergi Keşfet ]</a></li>
+
+		</ul>
+		<div class="ui-grid-a center">
+    		<div class="ui-block-a">
+				<a href="#aboutScreen" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Info</a>
+			</div>
+    		<div class="ui-block-b">
+				<a href="#mapScreen" class="ui-btn ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Map</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="currentExhibits" data-role="page">
+	<header data-role="header" data-position="fixed" data-id="appHeader">
+		<h1>Vidobu</h1>
+		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Geri</a>
+	</header>
+	<div data-role="content">
+		<h1 class="center">Güncel Haberler</h1>
+		<ul data-role="listview" data-inset="false" class="ui-nodisc-icon ui-alt-icon">
+			<li><a href="#"><img src="imgs/Westhoff_thumb.png">
+				<h2>Arman Kara</h2>
+				<p>Son Hafta</p></a>
+			</li>
+			<li><a href="#"><img src="imgs/101733188_thumb.png">
+				<h2>Kırmızı</h2>
+				<p>Hakan Çamoğlu</p></a>
+			</li>
+			<li><a href="#"><img src="imgs/106588354_thumb.png">
+				<h2>Lorem İpsum</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></a>
+			</li>
+			<li><a href="#"><img src="imgs/Watching_thumb.png">
+				<h2>Ogün Demir</h2>
+				<p>Gelecek Etkinlikler</p></a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id="pastExhibits" data-role="page">
+	<header data-role="header" data-position="fixed" data-id="appHeader">
+		<h1>Vidobu</h1>
+		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Geri</a>
+	</header>
+	<div data-role="content">
+		<h1 class="center">Geçmiş Haberler</h1>
+		<ul data-role="listview" data-inset="false" class="ui-nodisc-icon ui-alt-icon">
+			<li><a href="#"><img src="imgs/GroundSwell_thumb.png">
+				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+				<p> </p></a>
+			</li>
+			<li><a href="#"><img src="imgs/Buildings_thumb.png">
+				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+				<p> </p></a>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+	
+<div id="mapScreen" data-role="page">
+	<header data-role="header" data-position="fixed" data-id="appHeader">
+		<h1>Vidobu</h1>
+		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+	</header>
+	<div data-role="content">
+		<h2 class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+		<p class="center">İTÜ Teknokent<br>(800)555-1212</p>
+		<div id="map2"><img src="imgs/map.png" /></div>
+	</div>
+</div>
+
+<div id="discoverScreen" data-role="page">
+	<header data-role="header" data-position="fixed" data-id="appHeader">
+		<h1>Vidobu</h1>
+		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Geri</a>
+	</header>
+	<div data-role="content">
+		<img id="qrcode" src="imgs/qr.png" />
+		<h3 class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+		<p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+		<a id="qrScanBtn" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-search">Keşfet</a>
+	</div>
+</div>
+
+<div id="aboutScreen" data-role="page">
+	<header data-role="header" data-position="fixed" data-id="appHeader">
+		<h1>Vidobu</h1>
+		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
+	</header>
+	<div data-role="content">
+		<h2 class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+		<h3 class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+		<img class="center banner" src="imgs/Museum.png" />
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elitLorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+		<p class="center">İTÜ Teknokent<br>(800)555-1212</p>
+	</div>
+</div>
+</body>
+</html>
